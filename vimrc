@@ -7,6 +7,11 @@ autocmd BufEnter * :syntax sync fromstart
 let mapleader=","
 au FocusLost * :up " auto save files when focus is lost
 
+" 设置缩进
+set expandtab
+set smarttab
+set shiftwidth=2
+set ts=2
 set nocompatible    " 关闭兼容模式
 set autoindent      " 打开自动缩,继承前一行的缩进方式，特别适用于多行注释
 set nu              " 显示行号
@@ -21,7 +26,7 @@ set showmatch       " 显示匹配的括号
 set nowb
 set lbr             " 在breakat字符处而不是最后一个字符处断行
 set ai              " 自动缩进
-set si              " 智能缩进
+" set si              " 智能缩进
 set history=100     " vim记住的历史操作的数量，默认的是20
 set autoread        " 当文件在外部被修改时，自动重新读取
 set mouse=a         " 在所有模式下都允许使用鼠标，还可以是n,v,i,c等
@@ -34,11 +39,6 @@ set ruler
 "set list
 "set listchars=tab:▸\ ,eol:¬
 
-" 设置缩进
-set expandtab
-set smarttab
-set shiftwidth=2
-set tabstop=2
 
 " 映射 Mac 风格的光标控制
 inoremap <C-e> <END>
@@ -51,9 +51,9 @@ nmap <C-Z> :shell<cr>
 " 把空格键映射成:
 nmap <space> :
 " 在NERDTree显示对应文件位置
-map <F7> :NERDTreeFind<CR>
+nmap <F7> :NERDTreeFind<CR>
 " NERDTree插件开关
-map <F8> :NERDTreeToggle<CR>
+nmap <F8> :NERDTreeToggle<CR>
 " F9启动taglist插件
 nnoremap <silent> <F9> :TlistToggle<CR>
 " 在文件名上按gf时，在新的tab中打开
@@ -142,3 +142,32 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
 " let g:mustache_abbreviations = 1
+" clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
+" auto complete {,(,<
+" inoremap ( ()<ESC>i
+" inoremap [ []<ESC>i
+" inoremap { {}<ESC>i
+" inoremap < <><ESC>i
+" inoremap " ""<ESC>i
+" inoremap ' '<ESC>i
+
+" add jbuilder syntax highlighting
+au BufNewFile,BufRead *.jbuilder set ft=ruby
+
+".vimrc
+map <c-f> :call JsBeautify()<cr>
+"" or
+" autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for json
+" autocmd FileType json noremap <buffer> <c-j> :call JsonBeautify()<cr>
+" " for jsx
+" autocmd FileType jsx noremap <buffer> <c-f> :call JsxBeautify()<cr>
+" " for html
+" autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" " for css or scss
+" autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>"

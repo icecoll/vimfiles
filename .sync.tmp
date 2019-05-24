@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ "upload" == $1 ];then
+    rsync -av ./ sdw:/srv/www/dw49.shoplinedev.com/
+elif [ 'download' == $1 ];then
+    rsync -av sdw:/srv/www/dw49.shoplinedev.com/ ./
+fi
